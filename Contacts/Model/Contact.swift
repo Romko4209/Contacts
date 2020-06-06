@@ -13,6 +13,6 @@ struct Contact {
     private var name: String
     private var surname: String
     private var email: String
-    private let image: UIImage
-    ç
+    private let imagePerson: UIImage
+    
 }

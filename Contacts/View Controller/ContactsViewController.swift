@@ -12,7 +12,7 @@ class ContactsViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     
-    var contacts = ["test","test","test","test","test","test","test",]
+    var contacts = [Contact]()
     
     
     override func viewDidLoad() {

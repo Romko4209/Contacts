@@ -15,17 +15,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="feP-dM-kdB">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="138" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="feP-dM-kdB">
                                 <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="NAi-e5-ReZ">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="138" id="NAi-e5-ReZ" customClass="ContactViewCell" customModule="Contacts" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="138"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NAi-e5-ReZ" id="FPd-17-4fj">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="138"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nLp-mi-AdY">
+                                                    <rect key="frame" x="15" y="11" width="290" height="100"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jjM-PT-fwX">
+                                                            <rect key="frame" x="0.0" y="1" width="100" height="97.5"/>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5IX-tf-Aym">
+                                                            <rect key="frame" x="108" y="0.0" width="182" height="100"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGf-7m-rFR">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="182" height="35"/>
+                                                                    <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="surname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99P-uu-4P9">
+                                                                    <rect key="frame" x="0.0" y="43" width="182" height="24.5"/>
+                                                                    <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="e-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvW-rs-kNR">
+                                                                    <rect key="frame" x="0.0" y="75.5" width="182" height="24.5"/>
+                                                                    <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="yvW-rs-kNR" secondAttribute="trailing" id="3mJ-4p-7kb"/>
+                                                                <constraint firstItem="yvW-rs-kNR" firstAttribute="leading" secondItem="5IX-tf-Aym" secondAttribute="leading" id="NMJ-44-8gZ"/>
+                                                                <constraint firstAttribute="bottom" secondItem="yvW-rs-kNR" secondAttribute="bottom" id="het-fB-gYt"/>
+                                                                <constraint firstAttribute="trailing" secondItem="99P-uu-4P9" secondAttribute="trailing" id="jIN-QT-uCx"/>
+                                                                <constraint firstAttribute="trailing" secondItem="AGf-7m-rFR" secondAttribute="trailing" id="kGS-XW-Xjx"/>
+                                                                <constraint firstItem="AGf-7m-rFR" firstAttribute="leading" secondItem="5IX-tf-Aym" secondAttribute="leading" id="mo1-OC-TlB"/>
+                                                                <constraint firstItem="AGf-7m-rFR" firstAttribute="top" secondItem="5IX-tf-Aym" secondAttribute="top" id="pcO-b3-Zdp"/>
+                                                                <constraint firstItem="99P-uu-4P9" firstAttribute="leading" secondItem="5IX-tf-Aym" secondAttribute="leading" id="ziH-VY-OMp"/>
+                                                            </constraints>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="5IX-tf-Aym" secondAttribute="bottom" id="4sL-DC-Tmz"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nLp-mi-AdY" firstAttribute="top" secondItem="FPd-17-4fj" secondAttribute="topMargin" id="2z5-aX-dUw"/>
+                                                <constraint firstItem="AGf-7m-rFR" firstAttribute="height" secondItem="FPd-17-4fj" secondAttribute="height" multiplier="0.253623" id="995-AO-6nv"/>
+                                                <constraint firstItem="jjM-PT-fwX" firstAttribute="width" secondItem="FPd-17-4fj" secondAttribute="width" multiplier="0.3125" id="EXM-Pq-Vzy"/>
+                                                <constraint firstItem="nLp-mi-AdY" firstAttribute="leading" secondItem="FPd-17-4fj" secondAttribute="leadingMargin" id="FQK-Ys-DhN"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="nLp-mi-AdY" secondAttribute="trailing" id="Peh-Pr-LU0"/>
+                                                <constraint firstItem="AGf-7m-rFR" firstAttribute="width" secondItem="FPd-17-4fj" secondAttribute="width" multiplier="0.56875" id="TRh-Ik-Y9u"/>
+                                                <constraint firstItem="jjM-PT-fwX" firstAttribute="height" secondItem="FPd-17-4fj" secondAttribute="height" multiplier="0.724638" id="V2G-oJ-fRN"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="email" destination="yvW-rs-kNR" id="pO8-ho-a24"/>
+                                            <outlet property="imagePerson" destination="jjM-PT-fwX" id="1yr-r9-nSA"/>
+                                            <outlet property="name" destination="AGf-7m-rFR" id="FVk-AS-2wY"/>
+                                            <outlet property="surname" destination="99P-uu-4P9" id="59k-E5-ra2"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -67,4 +128,7 @@
             <point key="canvasLocation" x="131.25" y="117.25352112676056"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="photo.fill" catalog="system" width="128" height="93"/>
+    </resources>
 </document>

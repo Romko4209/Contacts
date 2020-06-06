@@ -15,6 +15,7 @@
 		053D8F6B248C0E9200976F55 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053D8F6A248C0E9200976F55 /* ContactsViewController.swift */; };
 		053D8F6E248C111800976F55 /* Extension + ContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053D8F6D248C111800976F55 /* Extension + ContactsVC.swift */; };
 		053D8F70248C12C600976F55 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053D8F6F248C12C500976F55 /* Contact.swift */; };
+		053D8F72248C13ED00976F55 /* ContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053D8F71248C13ED00976F55 /* ContactViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		053D8F6A248C0E9200976F55 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		053D8F6D248C111800976F55 /* Extension + ContactsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + ContactsVC.swift"; sourceTree = "<group>"; };
 		053D8F6F248C12C500976F55 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		053D8F71248C13ED00976F55 /* ContactViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				053D8F6D248C111800976F55 /* Extension + ContactsVC.swift */,
+				053D8F71248C13ED00976F55 /* ContactViewCell.swift */,
 			);
 			path = "Extension ";
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				053D8F70248C12C600976F55 /* Contact.swift in Sources */,
 				053D8F6B248C0E9200976F55 /* ContactsViewController.swift in Sources */,
 				053D8F6E248C111800976F55 /* Extension + ContactsVC.swift in Sources */,
+				053D8F72248C13ED00976F55 /* ContactViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
