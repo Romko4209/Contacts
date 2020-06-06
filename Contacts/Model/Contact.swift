@@ -13,6 +13,22 @@ struct Contact {
     private var name: String
     private var surname: String
     private var email: String
-    private let imagePerson: UIImage
+    private let imagePerson: UIImage?
     
+    func getName() -> String{
+        return name
+    }
+    func getSurname() -> String{
+           return surname
+       }
+    func getEmail() -> String{
+           return email
+       }
+    func getImagePerson() -> UIImage{
+    
+        if let image = imagePerson {
+            return image
+        }
+        return UIImage.init(contentsOfFile: "photo.fill")!
+       }
 }

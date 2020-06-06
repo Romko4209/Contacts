@@ -11,12 +11,13 @@ import  UIKit
 extension ContactsViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return contacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ContactViewCell
-        
+        let contact = contacts[indexPath.row]
+        cell.setupCell(contact)
         return cell
     }
     

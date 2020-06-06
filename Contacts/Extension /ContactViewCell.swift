@@ -10,14 +10,16 @@ import UIKit
 
 class ContactViewCell: UITableViewCell {
 
-    @IBOutlet var name: UILabel!
-    @IBOutlet var surname: UILabel!
-    @IBOutlet var email: UILabel!
-    @IBOutlet var imagePerson: UIImageView!
+    @IBOutlet private var name: UILabel!
+    @IBOutlet private var surname: UILabel!
+    @IBOutlet private var email: UILabel!
+    @IBOutlet private var imagePerson: UIImageView!
     
     func setupCell(_ person:Contact){
-        
-        
+        name.text = person.getName()
+        surname.text = person.getSurname()
+        email.text = person.getEmail()
+        imagePerson.image = person.getImagePerson()
     }
     
 }
