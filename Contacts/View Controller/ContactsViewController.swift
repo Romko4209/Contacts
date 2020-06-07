@@ -114,14 +114,14 @@ extension ContactsViewController: UITableViewDataSource,UITableViewDelegate{
     
 }
 extension ContactsViewController: ContactVCDelegate{
-    func updateContacts(_ contact: Contact, identifier: String) {
+    func updateContacts(_ contact: Contact, identifier: String,pastName:String) {
         
         if identifier == "ContactsToAddContact"{
         self.contacts.append(contact)
         }else if identifier == "tapToCell"{
             
             for item in self.contacts{
-                if item.getImagePerson() == contact.getImagePerson(){
+                if item.getName() == pastName{
                     item.setName(contact.getName())
                     item.setSurname(contact.getSurname())
                     item.setEmail(contact.getEmail())

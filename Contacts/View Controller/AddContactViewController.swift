@@ -53,6 +53,11 @@ class AddContactViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func doneButton(_ sender: Any) {
        
+        
+        var pastName = ""
+        if let pastContact = self.contact{
+            pastName = pastContact.getName()
+        }
         guard let image = imagePerson.image else {return}
         guard let firstName = firstNameTextField.text else {return}
         guard let lastName = lastNameTextField.text else {return}
@@ -65,7 +70,7 @@ class AddContactViewController: UIViewController, UIImagePickerControllerDelegat
         guard let segueIdentifier = segueIdentifier else {
             return
         }
-        delegate?.updateContacts(contact,identifier: segueIdentifier)
+        delegate?.updateContacts(contact,identifier: segueIdentifier,pastName:pastName)
         dismiss(animated: true, completion: nil)
         
     }
