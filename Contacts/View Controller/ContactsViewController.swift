@@ -5,7 +5,13 @@ class ContactsViewController:UIViewController{
     
    
     @IBOutlet var tableView: UITableView!
-    
+    private var messageNoContacts: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "No contacts!"
+        
+        return label
+    }()
     
     private var contacts = [Contact]()
     private var contact: Contact?
@@ -29,6 +35,11 @@ class ContactsViewController:UIViewController{
                    }
                }
         
+        if contacts.count == 0{
+            view.addSubview(messageNoContacts)
+            messageNoContacts.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            messageNoContacts.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        }
         
     }
     
@@ -92,6 +103,9 @@ extension ContactsViewController: UITableViewDataSource,UITableViewDelegate{
 
             tableView.deleteRows(at: [indexPath], with: .fade)
             save()
+            if contacts.count == 0{
+                messageNoContacts.isHidden = false
+            }
         }
     }
     
@@ -117,6 +131,7 @@ extension ContactsViewController: ContactVCDelegate{
         }
                tableView.reloadData()
         save()
+        messageNoContacts.isHidden = true
             
     }
     
