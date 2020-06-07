@@ -91,9 +91,7 @@ extension ContactsViewController: UITableViewDataSource,UITableViewDelegate{
             contacts.remove(at: indexPath.row)
 
             tableView.deleteRows(at: [indexPath], with: .fade)
-
-        } else if editingStyle == .insert {
-           
+            save()
         }
     }
     
