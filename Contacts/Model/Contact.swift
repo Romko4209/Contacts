@@ -9,11 +9,19 @@
 import Foundation
 import UIKit
 
-struct Contact {
+class Contact {
+    
     private var name: String
     private var surname: String
     private var email: String
-    private let imagePerson: UIImage?
+    private var imagePerson: UIImage?
+    
+    init(name:String,surname: String,email: String,imagePerson: UIImage) {
+        self.name = name
+        self.surname = surname
+        self.email = email
+        self.imagePerson = imagePerson
+    }
     
     func getName() -> String{
         return name
