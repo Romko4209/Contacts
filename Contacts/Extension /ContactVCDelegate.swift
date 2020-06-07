@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ContactVCDelegate {
-    func updateContacts(_ contacts:Contact)
+    func updateContacts(_ contacts:Contact,identifier:String)
 }

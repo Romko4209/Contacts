@@ -39,4 +39,15 @@ class Contact {
         }
         return UIImage.init(contentsOfFile: "photo.fill")!
        }
+    
+    func setName(_ name:String){
+        self.name = name
+    }
+    func setSurname(_ surname:String){
+        self.surname = surname
+    }
+    func setEmail(_ email:String){
+        self.email = email
+    }
+   
 }

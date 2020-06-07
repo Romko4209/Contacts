@@ -15,15 +15,34 @@ class AddContactViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet var lastNameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var buttonDone: UIBarButtonItem!
+    @IBOutlet var buttonAddPhoto: UIButton!
     
     
-     var delegate: ContactVCDelegate?
+    
+    var delegate: ContactVCDelegate?
+    var contact: Contact?
+    var segueIdentifier:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         emailTextField.delegate = self
+      
+        if let contact = contact {
+            
+            firstNameTextField.text = contact.getName()
+            lastNameTextField.text = contact.getSurname()
+            emailTextField.text = contact.getEmail()
+            imagePerson.image = contact.getImagePerson()
+            
+        }
+        if let segueIdentifier = segueIdentifier {
+            if segueIdentifier == "tapToCell"{
+            buttonAddPhoto.isHidden = true
+            }
+        }
+        
     }
     
     
@@ -43,7 +62,10 @@ class AddContactViewController: UIViewController, UIImagePickerControllerDelegat
                               email: email,
                               imagePerson: image)
         
-        delegate?.updateContacts(contact)
+        guard let segueIdentifier = segueIdentifier else {
+            return
+        }
+        delegate?.updateContacts(contact,identifier: segueIdentifier)
         dismiss(animated: true, completion: nil)
         
     }

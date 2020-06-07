@@ -8,6 +8,7 @@ class ContactsViewController:UIViewController{
     
     
     private var contacts = [Contact]()
+    private var contact: Contact?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +21,18 @@ class ContactsViewController:UIViewController{
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? AddContactViewController {
-            dest.delegate = self
+       
+        guard let dest = segue.destination as? AddContactViewController else{return}
+        if segue.identifier == "tapToCell"{
+            dest.segueIdentifier = segue.identifier
+            dest.contact = contact
             
+        }else if segue.identifier == "ContactsToAddContact"{
+            dest.segueIdentifier = segue.identifier
         }
+        dest.delegate = self
+    
+            
     }
     
 
@@ -42,15 +51,54 @@ extension ContactsViewController: UITableViewDataSource,UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRow(at: indexPath, animated: true)
+        
+    
+    contact = contacts[indexPath.row]
+        
+    tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "tapToCell", sender: nil)
+        
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+
+        
+        if editingStyle == .delete {
+
+            contacts.remove(at: indexPath.row)
+
+            tableView.deleteRows(at: [indexPath], with: .fade)
+
+        } else if editingStyle == .insert {
+           
+        }
+    }
+    
+    
+    
     
 }
 extension ContactsViewController: ContactVCDelegate{
-    func updateContacts(_ contact: Contact) {
+    func updateContacts(_ contact: Contact, identifier: String) {
+        
+        if identifier == "ContactsToAddContact"{
         self.contacts.append(contact)
-        tableView.reloadData()
+        }else if identifier == "tapToCell"{
+            
+            for item in self.contacts{
+                if item.getImagePerson() == contact.getImagePerson(){
+                    item.setName(contact.getName())
+                    item.setSurname(contact.getSurname())
+                    item.setEmail(contact.getEmail())
+                }
+            }
+            
+        }
+               tableView.reloadData()
+            
     }
+    
+    
     
 }
 
