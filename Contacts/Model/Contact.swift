@@ -9,18 +9,18 @@
 import Foundation
 import UIKit
 
-class Contact {
+class Contact: Codable{
     
     private var name: String
     private var surname: String
     private var email: String
-    private var imagePerson: UIImage?
+    private var imagePerson: Data?
     
     init(name:String,surname: String,email: String,imagePerson: UIImage) {
         self.name = name
         self.surname = surname
         self.email = email
-        self.imagePerson = imagePerson
+        self.imagePerson = imagePerson.pngData()
     }
     
     func getName() -> String{
@@ -35,7 +35,7 @@ class Contact {
     func getImagePerson() -> UIImage{
     
         if let image = imagePerson {
-            return image
+            return UIImage(data: image)!
         }
         return UIImage.init(contentsOfFile: "photo.fill")!
        }

@@ -16,8 +16,31 @@ class ContactsViewController:UIViewController{
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+        
+        let defaults = UserDefaults.standard
+
+               if let savedPeople = defaults.object(forKey: "people") as? Data {
+                   let jsonDecoder = JSONDecoder()
+
+                   do {
+                       contacts = try jsonDecoder.decode([Contact].self, from: savedPeople)
+                   } catch {
+                       print("Failed to load people")
+                   }
+               }
+        
+        
     }
     
+    func save() {
+           let jsonEncoder = JSONEncoder()
+           if let savedData = try? jsonEncoder.encode(contacts) {
+               let defaults = UserDefaults.standard
+               defaults.set(savedData, forKey: "people")
+           } else {
+               print("Failed to save people.")
+           }
+       }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -95,6 +118,7 @@ extension ContactsViewController: ContactVCDelegate{
             
         }
                tableView.reloadData()
+        save()
             
     }
     
