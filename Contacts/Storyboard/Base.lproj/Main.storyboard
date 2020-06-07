@@ -47,7 +47,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="e-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvW-rs-kNR">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvW-rs-kNR">
                                                                     <rect key="frame" x="0.0" y="75.5" width="182" height="24.5"/>
                                                                     <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                                                     <nil key="textColor"/>
@@ -124,17 +124,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="whT-Ew-olv">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whT-Ew-olv">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                 <items>
-                                    <navigationItem id="jtr-uK-Ffn">
+                                    <navigationItem title="New Contact" id="jtr-uK-Ffn">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="V2y-6b-OzK">
                                             <connections>
                                                 <action selector="backButton:" destination="fWq-Wp-0sE" id="E1S-v5-WXL"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="X6d-b5-Oqc">
+                                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="X6d-b5-Oqc">
                                             <connections>
                                                 <action selector="doneButton:" destination="fWq-Wp-0sE" id="Q2Q-Yz-1LP"/>
                                             </connections>
@@ -142,15 +141,79 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="3TW-ZM-VND">
+                                <rect key="frame" x="110" y="72" width="100" height="150"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mwg-yw-t04">
+                                        <rect key="frame" x="0.0" y="0.5" width="100" height="99"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMJ-KS-Nrj">
+                                        <rect key="frame" x="0.0" y="117" width="100" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Add photo"/>
+                                        <connections>
+                                            <action selector="addPhotoButton:" destination="fWq-Wp-0sE" eventType="touchUpInside" id="skf-df-VF0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iqE-Zc-evf">
+                                <rect key="frame" x="16" y="254" width="288" height="118"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TPJ-Hk-bYp">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="didChangeTextField:" destination="fWq-Wp-0sE" eventType="editingChanged" id="FVz-rT-u8H"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dio-EE-kgQ">
+                                        <rect key="frame" x="0.0" y="42" width="288" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="didChangeTextField:" destination="fWq-Wp-0sE" eventType="editingChanged" id="SLM-9G-aes"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GYe-og-Pwl">
+                                        <rect key="frame" x="0.0" y="84" width="288" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="didChangeTextField:" destination="fWq-Wp-0sE" eventType="editingChanged" id="bM2-fP-3pF"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="whT-Ew-olv" firstAttribute="leading" secondItem="B3Q-OL-rAc" secondAttribute="leading" id="2RA-2L-DrE"/>
+                            <constraint firstItem="iqE-Zc-evf" firstAttribute="top" secondItem="3TW-ZM-VND" secondAttribute="bottom" constant="32" id="Fxb-wY-2Ge"/>
+                            <constraint firstItem="3TW-ZM-VND" firstAttribute="top" secondItem="whT-Ew-olv" secondAttribute="bottom" constant="16" id="J2N-YU-DeI"/>
+                            <constraint firstItem="mwg-yw-t04" firstAttribute="height" secondItem="NlI-qn-V4F" secondAttribute="height" multiplier="0.182482" id="Kh3-NP-5MJ"/>
+                            <constraint firstItem="mwg-yw-t04" firstAttribute="width" secondItem="NlI-qn-V4F" secondAttribute="width" multiplier="0.3125" id="N5Z-c0-n5r"/>
+                            <constraint firstItem="whT-Ew-olv" firstAttribute="trailing" secondItem="B3Q-OL-rAc" secondAttribute="trailing" id="ila-06-MpP"/>
+                            <constraint firstItem="3TW-ZM-VND" firstAttribute="centerX" secondItem="B3Q-OL-rAc" secondAttribute="centerX" id="rci-br-3hj"/>
+                            <constraint firstItem="B3Q-OL-rAc" firstAttribute="trailing" secondItem="iqE-Zc-evf" secondAttribute="trailing" constant="16" id="tbh-BO-KTD"/>
+                            <constraint firstItem="iqE-Zc-evf" firstAttribute="leading" secondItem="B3Q-OL-rAc" secondAttribute="leading" constant="16" id="xX2-QN-cax"/>
+                            <constraint firstItem="whT-Ew-olv" firstAttribute="top" secondItem="B3Q-OL-rAc" secondAttribute="top" id="yQX-EP-mNr"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="B3Q-OL-rAc"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="s9L-AC-Zpm"/>
+                    <connections>
+                        <outlet property="buttonDone" destination="X6d-b5-Oqc" id="w9o-Q4-c7i"/>
+                        <outlet property="emailTextField" destination="GYe-og-Pwl" id="Vqf-vG-kmu"/>
+                        <outlet property="firstNameTextField" destination="TPJ-Hk-bYp" id="gNc-gm-yfW"/>
+                        <outlet property="imagePerson" destination="mwg-yw-t04" id="1rh-mu-dUZ"/>
+                        <outlet property="lastNameTextField" destination="dio-EE-kgQ" id="2LL-IP-gSb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e0p-XM-hsx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2168" y="117"/>
+            <point key="canvasLocation" x="2167.5" y="116.19718309859155"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="es0-Cl-SjF">
@@ -172,6 +235,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>
     </resources>
 </document>

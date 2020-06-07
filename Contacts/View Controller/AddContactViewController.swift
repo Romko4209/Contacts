@@ -8,12 +8,23 @@
 
 import UIKit
 
-class AddContactViewController: UIViewController {
+class AddContactViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet var imagePerson: UIImageView!
+    @IBOutlet var firstNameTextField: UITextField!
+    @IBOutlet var lastNameTextField: UITextField!
+    @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var buttonDone: UIBarButtonItem!
+    
     
      var delegate: ContactVCDelegate?
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        emailTextField.delegate = self
+    }
     
     
     @IBAction func backButton(_ sender: Any) {
@@ -23,10 +34,13 @@ class AddContactViewController: UIViewController {
     
     @IBAction func doneButton(_ sender: Any) {
        
-        let image = #imageLiteral(resourceName: "wp6280052-desktop-lv-wallpapers")
-        let contact = Contact(name: "1",
-                              surname: "2",
-                              email: "3",
+        guard let image = imagePerson.image else {return}
+        guard let firstName = firstNameTextField.text else {return}
+        guard let lastName = lastNameTextField.text else {return}
+        guard let email = emailTextField.text else {return}
+        let contact = Contact(name: firstName,
+                              surname: lastName,
+                              email: email,
                               imagePerson: image)
         
         delegate?.updateContacts(contact)
@@ -37,5 +51,81 @@ class AddContactViewController: UIViewController {
     
     
     
+    @IBAction func addPhotoButton(_ sender: Any) {
+        let picker = UIImagePickerController()
+         picker.allowsEditing = true
+         picker.delegate = self
+         let ac = UIAlertController(title: "Choose!", message: nil, preferredStyle: .actionSheet)
+         
+        ac.addAction(UIAlertAction(title: "Camera", style: .default, handler: { [weak self] _ in
+             if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
+             {
+                 picker.sourceType = .camera
+
+             }
+             else
+             {
+                 let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
+                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                 self?.present(alert, animated: true, completion: nil)
+             }
+             self?.present(picker,animated: true)
+             
+         }))
+        
+         ac.addAction(UIAlertAction(title: "Library", style: .default, handler: { [weak self] _ in
+             self?.present(picker,animated: true)
+         }))
+         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+         
+         present(ac,animated: true)
+        
+         
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage else { return }
+
+        let imageName = UUID().uuidString
+        let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
+
+        if let jpegData = image.jpegData(compressionQuality: 0.8) {
+            try? jpegData.write(to: imagePath)
+        }
+
+        
+        let path = getDocumentsDirectory().appendingPathComponent(imageName)
+        imagePerson.image = UIImage(contentsOfFile: path.path)
+        
+        dismiss(animated: true)
+    }
+
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    
+    
+    @IBAction func didChangeTextField(_ sender: UITextField) {
+        if firstNameTextField.text != "" || lastNameTextField.text != "" || emailTextField.text != "" {
+            buttonDone.isEnabled = true
+        }else{
+            buttonDone.isEnabled = false
+        }
+    }
+    
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+}
+extension AddContactViewController: UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+    }
 
 }
