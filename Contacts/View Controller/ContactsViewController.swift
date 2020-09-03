@@ -23,17 +23,17 @@ class ContactsViewController:UIViewController{
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         
-        let defaults = UserDefaults.standard
-
-               if let savedPeople = defaults.object(forKey: "people") as? Data {
-                   let jsonDecoder = JSONDecoder()
-
-                   do {
-                       contacts = try jsonDecoder.decode([Contact].self, from: savedPeople)
-                   } catch {
-                       print("Failed to load people")
-                   }
-               }
+//        let defaults = UserDefaults.standard
+//
+//               if let savedPeople = defaults.object(forKey: "people") as? Data {
+//                   let jsonDecoder = JSONDecoder()
+//
+//                   do {
+//                       contacts = try jsonDecoder.decode([Contact].self, from: savedPeople)
+//                   } catch {
+//                       print("Failed to load people")
+//                   }
+//               }
         
         if contacts.count == 0{
             view.addSubview(messageNoContacts)
@@ -43,15 +43,15 @@ class ContactsViewController:UIViewController{
         
     }
     
-    func save() {
-           let jsonEncoder = JSONEncoder()
-           if let savedData = try? jsonEncoder.encode(contacts) {
-               let defaults = UserDefaults.standard
-               defaults.set(savedData, forKey: "people")
-           } else {
-               print("Failed to save people.")
-           }
-       }
+//    func save() {
+//           let jsonEncoder = JSONEncoder()
+//           if let savedData = try? jsonEncoder.encode(contacts) {
+//               let defaults = UserDefaults.standard
+//               defaults.set(savedData, forKey: "people")
+//           } else {
+//               print("Failed to save people.")
+//           }
+//       }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,7 +102,7 @@ extension ContactsViewController: UITableViewDataSource,UITableViewDelegate{
             contacts.remove(at: indexPath.row)
 
             tableView.deleteRows(at: [indexPath], with: .fade)
-            save()
+            //save()
             if contacts.count == 0{
                 messageNoContacts.isHidden = false
             }
@@ -130,7 +130,7 @@ extension ContactsViewController: ContactVCDelegate{
             
         }
                tableView.reloadData()
-        save()
+        //save()
         messageNoContacts.isHidden = true
             
     }

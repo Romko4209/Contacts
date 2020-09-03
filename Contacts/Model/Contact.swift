@@ -6,21 +6,25 @@
 //  Copyright © 2020 Romko. All rights reserved.
 //
 
-import Foundation
+import RealmSwift
 import UIKit
 
-class Contact: Codable{
+class Contact: Object{
     
-    private var name: String
-    private var surname: String
-    private var email: String
-    private var imagePerson: Data?
+    @objc private dynamic var name = ""
+    @objc private dynamic var surname = ""
+    @objc private dynamic var email = ""
+    @objc private dynamic var imagePerson = UIImage.init(contentsOfFile: "photo.fill")!.pngData()
     
     init(name:String,surname: String,email: String,imagePerson: UIImage) {
         self.name = name
         self.surname = surname
         self.email = email
         self.imagePerson = imagePerson.pngData()
+    }
+    
+    required init() {
+        fatalError("init() has not been implemented")
     }
     
     func getName() -> String{
@@ -33,12 +37,14 @@ class Contact: Codable{
            return email
        }
     func getImagePerson() -> UIImage{
-    
+
         if let image = imagePerson {
             return UIImage(data: image)!
         }
         return UIImage.init(contentsOfFile: "photo.fill")!
        }
+    
+        
     
     func setName(_ name:String){
         self.name = name
