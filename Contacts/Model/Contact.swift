@@ -14,18 +14,15 @@ class Contact: Object{
     @objc private dynamic var name = ""
     @objc private dynamic var surname = ""
     @objc private dynamic var email = ""
-    @objc private dynamic var imagePerson = UIImage.init(contentsOfFile: "photo.fill")!.pngData()
+   
     
-    init(name:String,surname: String,email: String,imagePerson: UIImage) {
-        self.name = name
-        self.surname = surname
-        self.email = email
-        self.imagePerson = imagePerson.pngData()
-    }
+//    init(name:String,surname: String,email: String) {
+//        self.name = name
+//        self.surname = surname
+//        self.email = email
+//    }
     
-    required init() {
-        fatalError("init() has not been implemented")
-    }
+   
     
     func getName() -> String{
         return name
@@ -35,13 +32,6 @@ class Contact: Object{
        }
     func getEmail() -> String{
            return email
-       }
-    func getImagePerson() -> UIImage{
-
-        if let image = imagePerson {
-            return UIImage(data: image)!
-        }
-        return UIImage.init(contentsOfFile: "photo.fill")!
        }
     
         

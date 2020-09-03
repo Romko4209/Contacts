@@ -34,7 +34,7 @@ class AddContactViewController: UIViewController, UIImagePickerControllerDelegat
             firstNameTextField.text = contact.getName()
             lastNameTextField.text = contact.getSurname()
             emailTextField.text = contact.getEmail()
-            imagePerson.image = contact.getImagePerson()
+           // imagePerson.image = contact.getImagePerson()
             
         }
         if let segueIdentifier = segueIdentifier {
@@ -58,14 +58,18 @@ class AddContactViewController: UIViewController, UIImagePickerControllerDelegat
         if let pastContact = self.contact{
             pastName = pastContact.getName()
         }
-        guard let image = imagePerson.image else {return}
+       
         guard let firstName = firstNameTextField.text else {return}
         guard let lastName = lastNameTextField.text else {return}
         guard let email = emailTextField.text else {return}
-        let contact = Contact(name: firstName,
-                              surname: lastName,
-                              email: email,
-                              imagePerson: image)
+//        let contact = Contact(name: firstName,
+//                              surname: lastName,
+//                              email: email)
+        let contact = Contact()
+        contact.setName(firstName)
+        contact.setSurname(lastName)
+        contact.setEmail(email)
+        
         
         guard let segueIdentifier = segueIdentifier else {
             return
