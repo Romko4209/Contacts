@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -50,6 +50,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05284EFB25014CBD000BBA3A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				053D8F71248C13ED00976F55 /* ContactViewCell.swift */,
+			);
+			name = View;
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		053D8F45248C0D8A00976F55 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +83,7 @@
 				053D8F69248C0E0000976F55 /* Model */,
 				053D8F6C248C0FEE00976F55 /* Extension  */,
 				053D8F68248C0DF300976F55 /* View Controller */,
+				05284EFB25014CBD000BBA3A /* View */,
 				053D8F66248C0DD300976F55 /* Storyboard */,
 				053D8F65248C0DA500976F55 /* Support Files */,
 				053D8F67248C0DE300976F55 /* Resources */,
@@ -128,7 +138,6 @@
 		053D8F6C248C0FEE00976F55 /* Extension  */ = {
 			isa = PBXGroup;
 			children = (
-				053D8F71248C13ED00976F55 /* ContactViewCell.swift */,
 				052AF4F8248D21EB00EC53EB /* ContactVCDelegate.swift */,
 			);
 			path = "Extension ";
@@ -140,7 +149,6 @@
 				B4315B4B36F407E271F6B732 /* Pods-Contacts.debug.xcconfig */,
 				B6B7380B6101FD123DA2066D /* Pods-Contacts.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

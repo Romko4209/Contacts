@@ -58,7 +58,7 @@ class AddContactViewController: UIViewController, UIImagePickerControllerDelegat
         if let pastContact = self.contact{
             pastName = pastContact.getName()
         }
-       
+      
         guard let firstName = firstNameTextField.text else {return}
         guard let lastName = lastNameTextField.text else {return}
         guard let email = emailTextField.text else {return}

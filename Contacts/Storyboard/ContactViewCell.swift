@@ -19,7 +19,8 @@ class ContactViewCell: UITableViewCell {
         name.text = person.getName()
         surname.text = person.getSurname()
         email.text = person.getEmail()
-        //imagePerson.image = person.getImagePerson()
+       // imagePerson.image = person.getImagePerson()
+        
     }
     
 }
