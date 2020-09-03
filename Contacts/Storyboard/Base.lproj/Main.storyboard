@@ -42,28 +42,18 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="surname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99P-uu-4P9">
-                                                                    <rect key="frame" x="0.0" y="43" width="177" height="24.5"/>
+                                                                    <rect key="frame" x="0.0" y="43" width="75.5" height="24.5"/>
                                                                     <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvW-rs-kNR">
-                                                                    <rect key="frame" x="0.0" y="75.5" width="177" height="24.5"/>
+                                                                    <rect key="frame" x="0.0" y="75.5" width="48.5" height="24.5"/>
                                                                     <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="20"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="yvW-rs-kNR" secondAttribute="trailing" id="3mJ-4p-7kb"/>
-                                                                <constraint firstItem="yvW-rs-kNR" firstAttribute="leading" secondItem="5IX-tf-Aym" secondAttribute="leading" id="NMJ-44-8gZ"/>
-                                                                <constraint firstAttribute="bottom" secondItem="yvW-rs-kNR" secondAttribute="bottom" id="het-fB-gYt"/>
-                                                                <constraint firstAttribute="trailing" secondItem="99P-uu-4P9" secondAttribute="trailing" id="jIN-QT-uCx"/>
-                                                                <constraint firstAttribute="trailing" secondItem="AGf-7m-rFR" secondAttribute="trailing" id="kGS-XW-Xjx"/>
-                                                                <constraint firstItem="AGf-7m-rFR" firstAttribute="leading" secondItem="5IX-tf-Aym" secondAttribute="leading" id="mo1-OC-TlB"/>
-                                                                <constraint firstItem="AGf-7m-rFR" firstAttribute="top" secondItem="5IX-tf-Aym" secondAttribute="top" id="pcO-b3-Zdp"/>
-                                                                <constraint firstItem="99P-uu-4P9" firstAttribute="leading" secondItem="5IX-tf-Aym" secondAttribute="leading" id="ziH-VY-OMp"/>
-                                                            </constraints>
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
