@@ -14,15 +14,10 @@ class Contact: Object{
     @objc private dynamic var name = ""
     @objc private dynamic var surname = ""
     @objc private dynamic var email = ""
-   
+    @objc private dynamic var imagePerson = UIImage.init(contentsOfFile: "person.fill")?.pngData()
     
-//    init(name:String,surname: String,email: String) {
-//        self.name = name
-//        self.surname = surname
-//        self.email = email
-//    }
-    
-   
+
+
     
     func getName() -> String{
         return name
@@ -34,7 +29,14 @@ class Contact: Object{
            return email
        }
     
+    func getImagePerson() -> UIImage{
         
+            if let image = imagePerson {
+                return UIImage(data: image)!
+            }
+            return UIImage.init(contentsOfFile: "photo.fill")!
+        }
+    
     
     func setName(_ name:String){
         self.name = name
@@ -46,4 +48,9 @@ class Contact: Object{
         self.email = email
     }
    
+    func setImage(_ image: UIImage){
+        
+        self.imagePerson = image.pngData()
+    }
+    
 }
