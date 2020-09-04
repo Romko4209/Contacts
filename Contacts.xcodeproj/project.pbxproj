@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		052AF4F7248D1A5200EC53EB /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052AF4F6248D1A5200EC53EB /* AddContactViewController.swift */; };
 		052AF4F9248D21EB00EC53EB /* ContactVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052AF4F8248D21EB00EC53EB /* ContactVCDelegate.swift */; };
+		052C546F2502051F00621D66 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052C546E2502051F00621D66 /* StorageManager.swift */; };
 		053D8F52248C0D8A00976F55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053D8F51248C0D8A00976F55 /* AppDelegate.swift */; };
 		053D8F54248C0D8A00976F55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053D8F53248C0D8A00976F55 /* SceneDelegate.swift */; };
 		053D8F59248C0D8A00976F55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 053D8F57248C0D8A00976F55 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		052AF4F6248D1A5200EC53EB /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
 		052AF4F8248D21EB00EC53EB /* ContactVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactVCDelegate.swift; sourceTree = "<group>"; };
+		052C546E2502051F00621D66 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		053D8F4E248C0D8A00976F55 /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		053D8F51248C0D8A00976F55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		053D8F53248C0D8A00976F55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				053D8F6F248C12C500976F55 /* Contact.swift */,
+				052C546E2502051F00621D66 /* StorageManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				053D8F70248C12C600976F55 /* Contact.swift in Sources */,
 				053D8F6B248C0E9200976F55 /* ContactsViewController.swift in Sources */,
 				053D8F72248C13ED00976F55 /* ContactViewCell.swift in Sources */,
+				052C546F2502051F00621D66 /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
