@@ -12,9 +12,9 @@ let realm = try! Realm()
 
 class StorageManager{
    
-        static func saveContacts(_ Contacts: [Contact]) {
+        static func saveContact(_ contact: Contact) {
             try! realm.write {
-                realm.add(Contacts)
+                realm.add(contact)
                }
            }
 }

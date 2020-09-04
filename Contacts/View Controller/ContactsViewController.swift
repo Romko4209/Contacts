@@ -1,5 +1,6 @@
 
 import UIKit
+import RealmSwift
 
 class ContactsViewController:UIViewController{
     
@@ -13,15 +14,21 @@ class ContactsViewController:UIViewController{
         return label
     }()
     
-    private var contacts = [Contact]()
+    private var contacts: Results<Contact>!
     private var contact: Contact?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        contacts = realm.objects(Contact.self)
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+        
+        
+        
+        print(contacts.count)
         
 //        let defaults = UserDefaults.standard
 //
@@ -94,20 +101,20 @@ extension ContactsViewController: UITableViewDataSource,UITableViewDelegate{
         
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-
-        
-        if editingStyle == .delete {
-
-            contacts.remove(at: indexPath.row)
-
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            //save()
-            if contacts.count == 0{
-                messageNoContacts.isHidden = false
-            }
-        }
-    }
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//
+//
+//        if editingStyle == .delete {
+//
+//            contacts.remove(at: indexPath.row)
+//
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//            //save()
+//            if contacts.count == 0{
+//                messageNoContacts.isHidden = false
+//            }
+//        }
+//    }
     
     
     
@@ -117,7 +124,10 @@ extension ContactsViewController: ContactVCDelegate{
     func updateContacts(_ contact: Contact, identifier: String,pastName:String) {
         
         if identifier == "ContactsToAddContact"{
-        self.contacts.append(contact)
+//        self.contacts.append(contact)
+          
+            StorageManager.saveContact(contact)
+            
         }else if identifier == "tapToCell"{
             
             for item in self.contacts{
