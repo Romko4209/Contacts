@@ -10,7 +10,7 @@ class ContactsViewController:UIViewController{
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "No contacts!"
-        
+        label.textColor = .systemBlue
         return label
     }()
     

@@ -14,7 +14,7 @@ class Contact: Object{
     @objc private dynamic var name = ""
     @objc private dynamic var surname = ""
     @objc private dynamic var email = ""
-   // @objc private dynamic var imagePerson = UIImage.init(contentsOfFile: "person.fill")
+    @objc private dynamic var imagePerson: Data? = nil
     
 
 
@@ -30,13 +30,13 @@ class Contact: Object{
         
        }
     
-//    func getImagePerson() -> UIImage{
-//
-//            if let image = imagePerson {
-//                return image
-//            }
-//            return #imageLiteral(resourceName: "wp6280052-desktop-lv-wallpapers")
-//        }
+    func getImagePerson() -> UIImage{
+
+            if let imageData = imagePerson {
+                return UIImage(data: imageData)!
+            }
+        return UIImage.init(contentsOfFile: "person.fill")!
+        }
     
     
     func setName(_ name:String){
@@ -49,8 +49,8 @@ class Contact: Object{
         self.email = email
     }
    
-//    func setImage(_ image: UIImage){
-//        self.imagePerson = image
-//    }
+    func setImage(_ image: UIImage){
+        self.imagePerson = image.pngData()
+    }
     
 }

@@ -19,7 +19,7 @@ UINavigationControllerDelegate {
     @IBOutlet var buttonAddPhoto: UIButton!
     
     
-    
+    var currentImage: UIImage?
     var delegate: ContactVCDelegate?
     var contact: Contact?
     var segueIdentifier:String?
@@ -35,7 +35,7 @@ UINavigationControllerDelegate {
             firstNameTextField.text = contact.getName()
             lastNameTextField.text = contact.getSurname()
             emailTextField.text = contact.getEmail()
-           // imagePerson.image = contact.getImagePerson()
+            imagePerson.image = contact.getImagePerson()
             
         }
         if let segueIdentifier = segueIdentifier {
@@ -53,24 +53,20 @@ UINavigationControllerDelegate {
     
     
     @IBAction func doneButton(_ sender: Any) {
-       
-        
-       // var pastName = ""
-        
-        
-        
       
         guard let firstName = firstNameTextField.text else {return}
         guard let lastName = lastNameTextField.text else {return}
         guard let email = emailTextField.text else {return}
-//        let contact = Contact(name: firstName,
-//                              surname: lastName,
-//                              email: email)
+        var image = #imageLiteral(resourceName: "toppng.com-blue-person-icon-blue-person-icon-271x350")
+        if let currentImage = self.currentImage {
+            image = currentImage
+        }
+        
         let contact = Contact()
         contact.setName(firstName)
         contact.setSurname(lastName)
         contact.setEmail(email)
-        
+        contact.setImage(image)
         
         guard let segueIdentifier = segueIdentifier else {
             print("Error segueIdentifier method doneButton")
@@ -141,7 +137,8 @@ UINavigationControllerDelegate {
 
         
         let path = getDocumentsDirectory().appendingPathComponent(imageName)
-        imagePerson.image = UIImage(contentsOfFile: path.path)
+        currentImage = UIImage(contentsOfFile: path.path)
+        imagePerson.image = currentImage
         
         dismiss(animated: true)
     }
