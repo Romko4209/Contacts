@@ -22,8 +22,17 @@ class StorageManager{
         try! realm.write{
             realm.delete(contact)
         }
-        
     }
+    
+    static func editContact(contact: Contact, newName: String,
+                            newSurname: String, newEmail: String){
+        try! realm.write{
+            contact.setName(newName)
+            contact.setSurname(newSurname)
+            contact.setEmail(newEmail)
+        }
+    }
+    
 }
 
 

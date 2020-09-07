@@ -26,20 +26,14 @@ class ContactsViewController:UIViewController{
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         
-        
-        
         print(contacts.count)
-        
         
         if contacts.count == 0{
             view.addSubview(messageNoContacts)
             messageNoContacts.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
             messageNoContacts.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         }
-        
     }
-    
-
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        
@@ -52,12 +46,9 @@ class ContactsViewController:UIViewController{
             dest.segueIdentifier = segue.identifier
         }
         dest.delegate = self
-    
-            
     }
-    
-
 }
+
 extension ContactsViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,16 +85,12 @@ extension ContactsViewController: UITableViewDataSource,UITableViewDelegate{
             }
         }
     }
-    
-    
-    
-    
 }
+
 extension ContactsViewController: ContactVCDelegate{
     func updateContacts(_ contact: Contact, identifier: String,pastName:String) {
         
         if identifier == "ContactsToAddContact"{
-//        self.contacts.append(contact)
           
             StorageManager.saveContact(contact)
             
@@ -119,12 +106,7 @@ extension ContactsViewController: ContactVCDelegate{
             
         }
                tableView.reloadData()
-        //save()
         messageNoContacts.isHidden = true
-            
     }
-    
-    
-    
 }
 
