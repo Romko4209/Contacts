@@ -56,7 +56,8 @@ extension ContactsViewController: UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ContactViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
+                                                 for: indexPath) as! ContactViewCell
         let contact = contacts[indexPath.row]
         cell.setupCell(contact)
         return cell
@@ -72,7 +73,9 @@ extension ContactsViewController: UITableViewDataSource,UITableViewDelegate{
         
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
 
 
         if editingStyle == .delete {
@@ -88,7 +91,8 @@ extension ContactsViewController: UITableViewDataSource,UITableViewDelegate{
 }
 
 extension ContactsViewController: ContactVCDelegate{
-    func updateContacts(_ contact: Contact, identifier: String,pastName:String) {
+ 
+    func updateContacts(_ contact: Contact, identifier: String,pastContact:Contact) {
         
         if identifier == "ContactsToAddContact"{
           
@@ -96,13 +100,10 @@ extension ContactsViewController: ContactVCDelegate{
             
         }else if identifier == "tapToCell"{
             
-            for item in self.contacts{
-                if item.getName() == pastName{
-                    item.setName(contact.getName())
-                    item.setSurname(contact.getSurname())
-                    item.setEmail(contact.getEmail())
-                }
-            }
+            StorageManager.editContact(contact: pastContact,
+                                       newName: contact.getName(),
+                                       newSurname: contact.getSurname(),
+                                       newEmail: contact.getEmail())
             
         }
                tableView.reloadData()

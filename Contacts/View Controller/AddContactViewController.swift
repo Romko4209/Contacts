@@ -8,7 +8,8 @@
 
 import UIKit
 
-class AddContactViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddContactViewController: UIViewController, UIImagePickerControllerDelegate,
+UINavigationControllerDelegate {
 
     @IBOutlet var imagePerson: UIImageView!
     @IBOutlet var firstNameTextField: UITextField!
@@ -54,10 +55,10 @@ class AddContactViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func doneButton(_ sender: Any) {
        
         
-        var pastName = ""
-        if let pastContact = self.contact{
-            pastName = pastContact.getName()
-        }
+       // var pastName = ""
+        
+        
+        
       
         guard let firstName = firstNameTextField.text else {return}
         guard let lastName = lastNameTextField.text else {return}
@@ -72,10 +73,17 @@ class AddContactViewController: UIViewController, UIImagePickerControllerDelegat
         
         
         guard let segueIdentifier = segueIdentifier else {
+            print("Error segueIdentifier method doneButton")
             return
         }
-        delegate?.updateContacts(contact,identifier: segueIdentifier,pastName:pastName)
-        dismiss(animated: true, completion: nil)
+        
+        if let pastContact = self.contact{
+            delegate?.updateContacts(contact,identifier: segueIdentifier,pastContact:pastContact)
+        }else{
+            let nonContact = Contact()
+            delegate?.updateContacts(contact,identifier: segueIdentifier,pastContact:nonContact)
+        }
+            dismiss(animated: true, completion: nil)
         
     }
     
@@ -96,15 +104,19 @@ class AddContactViewController: UIViewController, UIImagePickerControllerDelegat
              }
              else
              {
-                 let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
-                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                 let alert  = UIAlertController(title: "Warning",
+                                                message: "You don't have camera",
+                                                preferredStyle: .alert)
+                 alert.addAction(UIAlertAction(title: "OK",
+                                               style: .default, handler: nil))
                  self?.present(alert, animated: true, completion: nil)
              }
              self?.present(picker,animated: true)
              
          }))
         
-         ac.addAction(UIAlertAction(title: "Library", style: .default, handler: { [weak self] _ in
+         ac.addAction(UIAlertAction(title: "Library", style: .default,
+                                    handler: { [weak self] _ in
              self?.present(picker,animated: true)
          }))
          ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -115,7 +127,9 @@ class AddContactViewController: UIViewController, UIImagePickerControllerDelegat
         
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
         guard let image = info[.editedImage] as? UIImage else { return }
 
         let imageName = UUID().uuidString
