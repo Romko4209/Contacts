@@ -17,6 +17,13 @@ class StorageManager{
                 realm.add(contact)
                }
            }
+    
+    static func deleteContact(_ contact: Contact){
+        try! realm.write{
+            realm.delete(contact)
+        }
+        
+    }
 }
 
 
