@@ -26,8 +26,6 @@ class ContactsViewController:UIViewController{
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         
-        print(contacts.count)
-        
         if contacts.count == 0{
             view.addSubview(messageNoContacts)
             messageNoContacts.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
