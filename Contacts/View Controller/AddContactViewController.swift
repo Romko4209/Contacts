@@ -18,6 +18,7 @@ UINavigationControllerDelegate {
     @IBOutlet var buttonDone: UIBarButtonItem!
     @IBOutlet var buttonAddPhoto: UIButton!
     
+
     
     var currentImage: UIImage?
     var delegate: ContactVCDelegate?
@@ -26,10 +27,9 @@ UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firstNameTextField.delegate = self
-        lastNameTextField.delegate = self
-        emailTextField.delegate = self
-      
+    
+        setupKeyboard()
+        
         if let contact = contact {
             
             firstNameTextField.text = contact.getName()
@@ -44,6 +44,16 @@ UINavigationControllerDelegate {
             }
         }
         
+    }
+    
+    func setupKeyboard(){
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddContactViewController.backgroundTap))
+         self.view.addGestureRecognizer(tapGestureRecognizer)
+         
+        
+         NotificationCenter.default.addObserver(self, selector: #selector(AddContactViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+         
+         NotificationCenter.default.addObserver(self, selector: #selector(AddContactViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     
@@ -158,16 +168,44 @@ UINavigationControllerDelegate {
         }
     }
     
+    @objc func keyboardWillShow(notification: NSNotification) {
+            
+            guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
     
+               return
+            }
+            
+            
+            var height: CGFloat = 0.0
+            
+            if let activeTextField = emailTextField {
+                
+                let bottomOfTextField = activeTextField.convert(activeTextField.bounds, to: self.view).maxY;
+                let topOfKeyboard = self.view.frame.height - keyboardSize.height
+                
+                height = bottomOfTextField - topOfKeyboard + 16
+            }
+            
+            self.view.frame.origin.y = 0 - height
+            
+        }
+
+        @objc func keyboardWillHide(notification: NSNotification) {
+            self.view.frame.origin.y = 0
+        }
+        
+        @objc func backgroundTap(_ sender: UITapGestureRecognizer) {
+            self.view.endEditing(true)
+        }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
 }
+    
+
 extension AddContactViewController: UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
     }
-
+  
+      
 }
