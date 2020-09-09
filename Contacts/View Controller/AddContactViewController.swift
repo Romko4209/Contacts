@@ -15,10 +15,12 @@ UINavigationControllerDelegate {
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var buttonDone: UIBarButtonItem!
+    @IBOutlet var buttonDone: UIButton!
     @IBOutlet var buttonAddPhoto: UIButton!
+    @IBOutlet var stackButton: UIStackView!
     
-    var keyboardIsHide = true
+    
+    var keyboardIsHidden = true
     
     var currentImage: UIImage?
     var delegate: ContactVCDelegate?
@@ -170,7 +172,7 @@ UINavigationControllerDelegate {
     
     @objc func keyboardWillShow(notification: NSNotification) {
             
-        if !keyboardIsHide {
+        if !keyboardIsHidden {
             return
         }
         
@@ -181,19 +183,21 @@ UINavigationControllerDelegate {
             
             var height: CGFloat = 0.0
             
-            if let activeTextField = emailTextField {
+            if let bottomView = stackButton {
                 
-                let bottomOfTextField = activeTextField.convert(activeTextField.bounds, to: self.view).maxY;
+                let bottomOfTextField = bottomView.convert(bottomView.bounds, to: self.view).maxY;
                 let topOfKeyboard = self.view.frame.height - keyboardSize.height
                 
                 height = bottomOfTextField - topOfKeyboard + 16
             }
             
             self.view.frame.origin.y = 0 - height
+        keyboardIsHidden = false
         }
 
         @objc func keyboardWillHide(notification: NSNotification) {
             self.view.frame.origin.y = 0
+            keyboardIsHidden = true
         }
         
         @objc func backgroundTap(_ sender: UITapGestureRecognizer) {

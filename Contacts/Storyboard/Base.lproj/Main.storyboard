@@ -94,13 +94,13 @@
                     <navigationItem key="navigationItem" title="Contacts" id="1Gs-eE-ljk">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="16C-Rf-uU4">
                             <connections>
-                                <segue destination="fWq-Wp-0sE" kind="showDetail" identifier="ContactsToAddContact" id="Wnk-xu-DvV"/>
+                                <segue destination="fWq-Wp-0sE" kind="presentation" identifier="ContactsToAddContact" modalPresentationStyle="fullScreen" id="Wnk-xu-DvV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="feP-dM-kdB" id="ohZ-qz-GqW"/>
-                        <segue destination="fWq-Wp-0sE" kind="showDetail" identifier="tapToCell" id="OPj-ab-LYn"/>
+                        <segue destination="fWq-Wp-0sE" kind="presentation" identifier="tapToCell" modalPresentationStyle="fullScreen" id="OPj-ab-LYn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -112,34 +112,17 @@
             <objects>
                 <viewController id="fWq-Wp-0sE" customClass="AddContactViewController" customModule="Contacts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NlI-qn-V4F">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whT-Ew-olv">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
-                                <items>
-                                    <navigationItem id="jtr-uK-Ffn">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="V2y-6b-OzK">
-                                            <connections>
-                                                <action selector="backButton:" destination="fWq-Wp-0sE" id="E1S-v5-WXL"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="X6d-b5-Oqc">
-                                            <connections>
-                                                <action selector="doneButton:" destination="fWq-Wp-0sE" id="Q2Q-Yz-1LP"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="3TW-ZM-VND">
-                                <rect key="frame" x="110" y="72" width="100" height="150"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="3TW-ZM-VND" userLabel="Stack Photo">
+                                <rect key="frame" x="110" y="16" width="100" height="153.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toppng.com-blue-person-icon-blue-person-icon-271x350" translatesAutoresizingMaskIntoConstraints="NO" id="mwg-yw-t04">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="103.5"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMJ-KS-Nrj">
-                                        <rect key="frame" x="0.0" y="117" width="100" height="33"/>
+                                        <rect key="frame" x="0.0" y="120.5" width="100" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Add photo"/>
                                         <connections>
@@ -148,8 +131,8 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iqE-Zc-evf">
-                                <rect key="frame" x="16" y="254" width="288" height="118"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iqE-Zc-evf" userLabel="Stack textFields">
+                                <rect key="frame" x="16" y="201.5" width="288" height="118"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TPJ-Hk-bYp">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="34"/>
@@ -179,30 +162,53 @@
                                     </textField>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="w4i-hT-JJu" userLabel="Stack Button">
+                                <rect key="frame" x="74" y="351.5" width="172" height="36"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSp-3r-7BW">
+                                        <rect key="frame" x="0.0" y="0.0" width="61" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButton:" destination="fWq-Wp-0sE" eventType="touchUpInside" id="AR1-bf-eCu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xj9-Lo-kT5">
+                                        <rect key="frame" x="125" y="0.0" width="47" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="doneButton:" destination="fWq-Wp-0sE" eventType="touchUpInside" id="Ug4-OW-jsI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="whT-Ew-olv" firstAttribute="leading" secondItem="B3Q-OL-rAc" secondAttribute="leading" id="2RA-2L-DrE"/>
+                            <constraint firstItem="3TW-ZM-VND" firstAttribute="top" secondItem="B3Q-OL-rAc" secondAttribute="top" constant="16" id="Emo-IL-HbG"/>
                             <constraint firstItem="iqE-Zc-evf" firstAttribute="top" secondItem="3TW-ZM-VND" secondAttribute="bottom" constant="32" id="Fxb-wY-2Ge"/>
-                            <constraint firstItem="3TW-ZM-VND" firstAttribute="top" secondItem="whT-Ew-olv" secondAttribute="bottom" constant="16" id="J2N-YU-DeI"/>
+                            <constraint firstItem="w4i-hT-JJu" firstAttribute="centerX" secondItem="B3Q-OL-rAc" secondAttribute="centerX" id="G2r-w0-TaE"/>
                             <constraint firstItem="mwg-yw-t04" firstAttribute="height" secondItem="NlI-qn-V4F" secondAttribute="height" multiplier="0.182482" id="Kh3-NP-5MJ"/>
                             <constraint firstItem="mwg-yw-t04" firstAttribute="width" secondItem="NlI-qn-V4F" secondAttribute="width" multiplier="0.3125" id="N5Z-c0-n5r"/>
-                            <constraint firstItem="whT-Ew-olv" firstAttribute="trailing" secondItem="B3Q-OL-rAc" secondAttribute="trailing" id="ila-06-MpP"/>
+                            <constraint firstItem="w4i-hT-JJu" firstAttribute="top" secondItem="iqE-Zc-evf" secondAttribute="bottom" constant="32" id="gSp-KP-XDh"/>
                             <constraint firstItem="3TW-ZM-VND" firstAttribute="centerX" secondItem="B3Q-OL-rAc" secondAttribute="centerX" id="rci-br-3hj"/>
                             <constraint firstItem="B3Q-OL-rAc" firstAttribute="trailing" secondItem="iqE-Zc-evf" secondAttribute="trailing" constant="16" id="tbh-BO-KTD"/>
                             <constraint firstItem="iqE-Zc-evf" firstAttribute="leading" secondItem="B3Q-OL-rAc" secondAttribute="leading" constant="16" id="xX2-QN-cax"/>
-                            <constraint firstItem="whT-Ew-olv" firstAttribute="top" secondItem="B3Q-OL-rAc" secondAttribute="top" id="yQX-EP-mNr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B3Q-OL-rAc"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="s9L-AC-Zpm"/>
                     <connections>
                         <outlet property="buttonAddPhoto" destination="PMJ-KS-Nrj" id="B71-JX-W05"/>
-                        <outlet property="buttonDone" destination="X6d-b5-Oqc" id="w9o-Q4-c7i"/>
+                        <outlet property="buttonDone" destination="xj9-Lo-kT5" id="E7r-vj-EvE"/>
                         <outlet property="emailTextField" destination="GYe-og-Pwl" id="Vqf-vG-kmu"/>
                         <outlet property="firstNameTextField" destination="TPJ-Hk-bYp" id="gNc-gm-yfW"/>
                         <outlet property="imagePerson" destination="mwg-yw-t04" id="1rh-mu-dUZ"/>
                         <outlet property="lastNameTextField" destination="dio-EE-kgQ" id="2LL-IP-gSb"/>
+                        <outlet property="stackButton" destination="w4i-hT-JJu" id="77K-as-IKF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e0p-XM-hsx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
