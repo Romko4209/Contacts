@@ -18,7 +18,7 @@ UINavigationControllerDelegate {
     @IBOutlet var buttonDone: UIBarButtonItem!
     @IBOutlet var buttonAddPhoto: UIButton!
     
-
+    var keyboardIsHide = true
     
     var currentImage: UIImage?
     var delegate: ContactVCDelegate?
@@ -170,11 +170,14 @@ UINavigationControllerDelegate {
     
     @objc func keyboardWillShow(notification: NSNotification) {
             
-            guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-    
-               return
-            }
-            
+        if !keyboardIsHide {
+            return
+        }
+        
+            guard let keyboardSize =
+                (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
+                    as? NSValue)?.cgRectValue
+                else {return}
             
             var height: CGFloat = 0.0
             
@@ -187,7 +190,6 @@ UINavigationControllerDelegate {
             }
             
             self.view.frame.origin.y = 0 - height
-            
         }
 
         @objc func keyboardWillHide(notification: NSNotification) {
